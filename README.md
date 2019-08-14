@@ -43,7 +43,7 @@ Functions:
 
 Developers:
 
-- Henrique P. P. Pereira
+- Henrique P. P. Pereira (Phone: +55 21 96913-1601)
 - Nelson Violante-Carvalho
 - Ricardo Fabbri
 - Alex Babanin
