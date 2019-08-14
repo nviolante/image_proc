@@ -1,4 +1,6 @@
 """
+proc_drifter.py - 19.3 kB
+
 Description: Qualify the paths and calculate the mean
              and relative dispersion of the drifters.
 Input: dictionary with path file and valid balls
