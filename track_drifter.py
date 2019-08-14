@@ -1,23 +1,19 @@
 """
-Acha circulos e cria caminho dos circulos encontrados
-- o numero de circulos a serem rasterados sera a quantidade
-de circulos encontrados no primeiro frame
+track_drifter.py - 9.7 kB
 
-Henrique Pereira
-ONR
-03/05/2018
+Description: Track drifters released in a wave tank.
+Input: video file with initial and final time
+Output: paths with x and y position
 
-with the arguments:
-
-src_gray: Input image (grayscale)
-circles: A vector that stores sets of 3 values: x_{c}, y_{c}, r for each detected circle.
-CV_HOUGH_GRADIENT: Define the detection method. Currently this is the only one available in OpenCV
-dp = 1: The inverse ratio of resolution
-min_dist = src_gray.rows/8: Minimum distance between detected centers
-param_1 = 200: Upper threshold for the internal Canny edge detector
-param_2 = 100*: Threshold for center detection.
-min_radius = 0: Minimum radio to be detected. If unknown, put zero as default.
-max_radius = 0: Maximum radius to be detected. If unknown, put zero as default
+Functions:
+    - read_video
+    - read_frame
+    - find_first_and_last_frames
+    - frames_preproc
+    - find_circles
+    - find_initial_balls
+    - track_min_dist
+    - make_gif
 """
 
 import os
@@ -27,7 +23,7 @@ import cv2
 import pandas as pd
 from scipy import spatial
 
-# cv2.destroyAllWindows()
+cv2.destroyAllWindows()
 
 def read_video(pathname, filename):
     cap = cv2.VideoCapture(pathname + filename)
@@ -40,24 +36,30 @@ def read_frame(cap, ff):
     frame = frame[250:-130,:]
     return frame
 
-# def read_paths_xy(filename):
-#     df_list = read_csv(filename)
-#     df = np.vstack(df_list)
-#     return df
+def read_paths_xy(filename):
+    df_list = read_csv(filename)
+    df = np.vstack(df_list)
+    return df
 
 def find_first_and_last_frames(dict_videos, filename, fps):
+
     # first and final time in datetime format
     dtime = pd.to_datetime(dict_videos[filename_video], format='%M:%S')
+
     # time in timedelta (to convert to total_seconds)
     timei = dtime[0] - pd.Timestamp('1900')
     timef = dtime[1] - pd.Timestamp('1900')
+
     # video duration in time_delta format
     dur = dtime[1] - dtime[0]
+
     # video duration in seconds
     durs = dur.total_seconds()
+
     # number of first and last frames to be reaed (based of fps)
     nframei = int(timei.total_seconds() * fps)
     nframef = int(timef.total_seconds() * fps)
+
     return nframei, nframef
 
 def frames_preproc(frame1, frame2):
@@ -77,6 +79,10 @@ def frames_preproc(frame1, frame2):
     return gray1, gray2, frame1, frame2
 
 def find_circles(frame):
+    """
+    Find circles with HoughCircles
+    """
+
     circles = cv2.HoughCircles(image=frame,
                                method=cv2.HOUGH_GRADIENT,
                                dp=1,
@@ -85,25 +91,35 @@ def find_circles(frame):
                                param2=5,
                                minRadius=10,
                                maxRadius=20)
+
     return circles
 
 def find_initial_balls(circles1):
+    """
+    Find initial balls
+    """
+
     # list of circles to be tracked
     balls_xy = circles1[0,:,:2]
     for ball_id in range(len(balls_xy)):
         paths['ball_{ball_id}'.format(ball_id=str(ball_id).zfill(2))]  = [list(balls_xy[ball_id].astype(int))]
+
     return paths
 
 def track_min_dist(paths, ball, circles2):
     """
     Track balls with minimum distance
     """
+
     # point x and y for one  ball for the frame_i
     pt = paths[ball][-1]
+
     # all point x and y for one ball for the frame_i+1
     A = circles2[0,:,:2]
+
     # calculates the distance and index
     distance, index = spatial.KDTree(A).query(pt)
+
     # print (distance, index)
 
     if distance > 30:
@@ -124,8 +140,6 @@ def make_gif():
 if __name__ == '__main__':
 
     # ------------------------------------------------------------------------ #
-    # Dados de entrada
-
     # filename_video = 'T100_010300_CAM1.avi'
 
     track_balls = True
@@ -136,32 +150,31 @@ if __name__ == '__main__':
     # dicionario com nome do video e tempo inicial e final em que as
     # bolinhas estao dentro da tela e ja se separaram (quando em cluster)
     dict_videos = {
-                   # 'T100_010100.CAM1.avi': ['00:04','01:52'],
-                   # 'T100_010100.CAM1_ISOPOR.avi': ['00:11','01:35'],
-                   # 'T100_010100_CAM1.avi': ['00:12','01:58'],
-                   # 'T100_010200_CAM1.avi': ['00:12','01:56'],
-                   # 'T100_010300_CAM1.avi': ['00:15','01:37'], # ok
-                   # 'T100_020100_CAM1.avi': ['00:00','01:30'],
-                   # 'T100_020200_CAM1.avi': ['00:00','01:42'],
-                   # 'T100_020201_CAM1.avi': ['00:08','02:30'],
-                   # 'T100_020300_CAM1.avi': ['00:00','02:10'],
-                   # 'T100_030100_CAM1.avi': ['00:12','01:50'],
-                   # 'T100_030200_CAM1.avi': ['00:06','02:25'],
-                   # 'T100_030300_CAM1.avi': ['00:07','01:46'],
-                   # 'T100_040100_CAM1.avi': ['00:04','03:35'],
-                   # 'T100_040200_CAM1.avi': ['00:00','03:30'],
+                   'T100_010100.CAM1.avi': ['00:04','01:52'],
+                   'T100_010100.CAM1_ISOPOR.avi': ['00:11','01:35'],
+                   'T100_010100_CAM1.avi': ['00:12','01:58'],
+                   'T100_010200_CAM1.avi': ['00:12','01:56'],
+                   'T100_010300_CAM1.avi': ['00:15','01:37'],
+                   'T100_020100_CAM1.avi': ['00:00','01:30'],
+                   'T100_020200_CAM1.avi': ['00:00','01:42'],
+                   'T100_020201_CAM1.avi': ['00:08','02:30'],
+                   'T100_020300_CAM1.avi': ['00:00','02:10'],
+                   'T100_030100_CAM1.avi': ['00:12','01:50'],
+                   'T100_030200_CAM1.avi': ['00:06','02:25'],
+                   'T100_030300_CAM1.avi': ['00:07','01:46'],
+                   'T100_040100_CAM1.avi': ['00:04','03:35'],
+                   'T100_040200_CAM1.avi': ['00:00','03:30'],
                    'T100_040300_CAM1.avi': ['00:03','02:38'],
-                   # 'T100_050100_CAM1.avi': ['00:03','01:50'],
-                   # 'T100_050200_CAM1.avi': ['00:05','01:26'],
-                   # 'T100_050300_CAM1.avi': ['00:04','01:52'],
+                   'T100_050100_CAM1.avi': ['00:03','01:50'],
+                   'T100_050200_CAM1.avi': ['00:05','01:26'],
+                   'T100_050300_CAM1.avi': ['00:04','01:52'],
                    }
 
-    # pathname_video = '/media/lioc/GODA/wavescatter_videos/DERIVA_RANDOMICA/VIDEO/CAM1/T100/'
     pathname_video = os.environ['HOME'] + '/Documents/wavescatter_data/'
 
     for filename_video in dict_videos.keys():
 
-        # pathname_fig_output = os.environ['HOME'] + '/Documents/wavescatter_results/{}/'.format(filename_video[:-4])
+        pathname_fig_output = os.environ['HOME'] + '/Documents/wavescatter_results/{}/'.format(filename_video[:-4])
 
         # create directory for fig outuput
         # os.system('mkdir {}'.format(pathname_fig_output))
@@ -254,6 +267,6 @@ if __name__ == '__main__':
         if read_balls_paths:
             d = pd.read_pickle('data/paths_%s.pkl' %filename_video[:-4])
 
-        #if make_video_png:
-        #    string = "ffmpeg -framerate 10 -i %*.png output.mp4"
-        #    os.system(string)
+        if make_video_png:
+           string = "ffmpeg -framerate 10 -i %*.png output.mp4"
+           os.system(string)
