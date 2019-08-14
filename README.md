@@ -43,7 +43,7 @@ Functions:
 
 Developers:
 
-- Henrique P. P. Pereira (Phone: +55 21 96913-1601)
+- Henrique P. P. Pereira
 - Nelson Violante-Carvalho
 - Ricardo Fabbri
 - Alex Babanin
@@ -53,7 +53,7 @@ Developers:
 Concatct Adress:
 
 Adress: Ocean Engineering Program, Rio de Janeiro Federal University, Brazil
-Telephone: 
+Telephone: + 55 (21) 3938-8813
 
 Hardware required:
 
