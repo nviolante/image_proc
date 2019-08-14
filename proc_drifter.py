@@ -1,4 +1,24 @@
-# Processamento dos dados do WaveScatter
+"""
+Description: Qualify the paths and calculate the mean
+             and relative dispersion of the drifters.
+Input: dictionary with path file and valid balls
+Output: qualified paths
+
+Functions:
+    - calculate_paths_dists_vels
+    - calculate_mean_path_xy
+    - calculate_relative_dispersion
+    - calculate_velocity_statistics
+    - exponential_func
+    - adjust_fit_rel_disp
+    - plot_paths_vels
+    - plot_distances
+    - plot_distances_log
+    - plot_mean_distances
+    - plot_rel_disp
+    - plot_adjust_rel_disp
+    - plot_adjust_dist_t0
+"""
 
 import os
 import numpy as np
