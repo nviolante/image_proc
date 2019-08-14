@@ -107,12 +107,6 @@ def calculate_relative_dispersion(paths_xy, mean_path_xy):
     - Mean of all balls
     """
 
-    # teste
-    # mean_path_xy[0] = np.arange(len(mean_path_xy))
-    # mean_path_xy[1] = 1.0
-    # paths_xy['ball_00'][:,0] = np.arange(len(mean_path_xy))    
-    # paths_xy['ball_00'][:,1] = 4.0
-
     # mean square distance for each ball
     rel_disp = {}
     for ball in paths_xy.keys():
@@ -313,94 +307,94 @@ if __name__ == '__main__':
 
     # list of balls with errors
     balls_tracked_keys = {
-                        # 'paths_T100_010300_CAM1': ['ball_02', 'ball_16', 'ball_04', 'ball_19', 'ball_17',
-                        #                            'ball_00', 'ball_14', 'ball_18', 'ball_20', 'ball_06',
-                        #                            'ball_07', 'ball_13', 'ball_08'],
+                        'paths_T100_010300_CAM1': ['ball_02', 'ball_16', 'ball_04', 'ball_19', 'ball_17',
+                                                   'ball_00', 'ball_14', 'ball_18', 'ball_20', 'ball_06',
+                                                   'ball_07', 'ball_13', 'ball_08'],
 
-                        # 'paths_T100_020100_CAM1': ['ball_20', 'ball_06', 'ball_16', 'ball_05', 'ball_01',
-                        #                            'ball_03', 'ball_02', 'ball_04', 'ball_17', 'ball_18',
-                        #                            'ball_25', 'ball_32', 'ball_07', 'ball_12', 'ball_15'],
+                        'paths_T100_020100_CAM1': ['ball_20', 'ball_06', 'ball_16', 'ball_05', 'ball_01',
+                                                   'ball_03', 'ball_02', 'ball_04', 'ball_17', 'ball_18',
+                                                   'ball_25', 'ball_32', 'ball_07', 'ball_12', 'ball_15'],
 
-                        # 'paths_T100_020201_CAM1': ['ball_04', 'ball_15', 'ball_02', 'ball_00', 'ball_08',
-                        #                            'ball_29', 'ball_05', 'ball_14', 'ball_03', 'ball_16'],
+                        'paths_T100_020201_CAM1': ['ball_04', 'ball_15', 'ball_02', 'ball_00', 'ball_08',
+                                                   'ball_29', 'ball_05', 'ball_14', 'ball_03', 'ball_16'],
 
-                        # 'paths_T100_020300_CAM1': ['ball_14', 'ball_08', 'ball_21', 'ball_02', 'ball_12',
-                        #                            'ball_16', 'ball_05', 'ball_09', 'ball_20', 'ball_06',
-                        #                            'ball_00'],
+                        'paths_T100_020300_CAM1': ['ball_14', 'ball_08', 'ball_21', 'ball_02', 'ball_12',
+                                                   'ball_16', 'ball_05', 'ball_09', 'ball_20', 'ball_06',
+                                                   'ball_00'],
 
-                        # 'paths_T100_030100_CAM1': ['ball_27', 'ball_04', 'ball_00', 'ball_24', 'ball_31',
-                        #                            'ball_20', 'ball_05', 'ball_10', 'ball_32', 'ball_25',
-                        #                            'ball_30', 'ball_06', 'ball_22', 'ball_12', 'ball_17',
-                        #                            'ball_16', 'ball_33', 'ball_13', 'ball_26', 'ball_14',
-                        #                            'ball_03', 'ball_28', 'ball_07', 'ball_08', 'ball_02',
-                        #                            'ball_01', 'ball_19'],
+                        'paths_T100_030100_CAM1': ['ball_27', 'ball_04', 'ball_00', 'ball_24', 'ball_31',
+                                                   'ball_20', 'ball_05', 'ball_10', 'ball_32', 'ball_25',
+                                                   'ball_30', 'ball_06', 'ball_22', 'ball_12', 'ball_17',
+                                                   'ball_16', 'ball_33', 'ball_13', 'ball_26', 'ball_14',
+                                                   'ball_03', 'ball_28', 'ball_07', 'ball_08', 'ball_02',
+                                                   'ball_01', 'ball_19'],
 
-                        # 'paths_T100_030200_CAM1': ['ball_04', 'ball_05', 'ball_20', 'ball_22', 'ball_19',
-                        #                            'ball_08', 'ball_32', 'ball_09', 'ball_29', 'ball_26',
-                        #                            'ball_12', 'ball_10', 'ball_25', 'ball_23'],
+                        'paths_T100_030200_CAM1': ['ball_04', 'ball_05', 'ball_20', 'ball_22', 'ball_19',
+                                                   'ball_08', 'ball_32', 'ball_09', 'ball_29', 'ball_26',
+                                                   'ball_12', 'ball_10', 'ball_25', 'ball_23'],
 
-                        # 'paths_T100_030300_CAM1': ['ball_14', 'ball_28', 'ball_22', 'ball_01', 'ball_07',
-                        #                            'ball_28', 'ball_00', 'ball_20', 'ball_27', 'ball_29',
-                        #                            'ball_16', 'ball_06', 'ball_17', 'ball_35', 'ball_09',
-                        #                            'ball_38'],
+                        'paths_T100_030300_CAM1': ['ball_14', 'ball_28', 'ball_22', 'ball_01', 'ball_07',
+                                                   'ball_28', 'ball_00', 'ball_20', 'ball_27', 'ball_29',
+                                                   'ball_16', 'ball_06', 'ball_17', 'ball_35', 'ball_09',
+                                                   'ball_38'],
 
-                        # 'paths_T100_040100_CAM1': ['ball_08', 'ball_01', 'ball_16', 'ball_20', 'ball_10',
-                        #                            'ball_21', 'ball_00', 'ball_13', 'ball_12', 'ball_22',
-                        #                            'ball_32', 'ball_06', 'ball_28', 'ball_34', 'ball_17',
-                        #                            'ball_23', 'ball_29', 'ball_18', 'ball_03', 'ball_07'],
+                        'paths_T100_040100_CAM1': ['ball_08', 'ball_01', 'ball_16', 'ball_20', 'ball_10',
+                                                   'ball_21', 'ball_00', 'ball_13', 'ball_12', 'ball_22',
+                                                   'ball_32', 'ball_06', 'ball_28', 'ball_34', 'ball_17',
+                                                   'ball_23', 'ball_29', 'ball_18', 'ball_03', 'ball_07'],
 
                         'paths_T100_040300_CAM1': ['ball_26', 'ball_00', 'ball_01', 'ball_13',
                                                    'ball_22', 'ball_27', 'ball_31', 'ball_17', 'ball_14',
                                                    'ball_30', 'ball_23', 'ball_33', 'ball_07', 'ball_29',
                                                    'ball_21', 'ball_09', 'ball_05', 'ball_19'],
 
-                        # 'paths_T100_050100_CAM1': ['ball_29', 'ball_04', 'ball_01', 'ball_00', 'ball_05',
-                        #                            'ball_15', 'ball_19', 'ball_12', 'ball_10', 'ball_13',
-                        #                            'ball_03', 'ball_18', 'ball_32', 'ball_33', 'ball_24'],
+                        'paths_T100_050100_CAM1': ['ball_29', 'ball_04', 'ball_01', 'ball_00', 'ball_05',
+                                                   'ball_15', 'ball_19', 'ball_12', 'ball_10', 'ball_13',
+                                                   'ball_03', 'ball_18', 'ball_32', 'ball_33', 'ball_24'],
 
-                        # 'paths_T100_050200_CAM1': ['ball_34', 'ball_28', 'ball_05', 'ball_00', 'ball_10',
-                        #                            'ball_14', 'ball_11', 'ball_13', 'ball_01', 'ball_08',
-                        #                            'ball_12', 'ball_33', 'ball_36', 'ball_26', 'ball_16',
-                        #                            'ball_22', 'ball_37', 'ball_21', 'ball_29', 'ball_04',
-                        #                            'ball_02'],
+                        'paths_T100_050200_CAM1': ['ball_34', 'ball_28', 'ball_05', 'ball_00', 'ball_10',
+                                                   'ball_14', 'ball_11', 'ball_13', 'ball_01', 'ball_08',
+                                                   'ball_12', 'ball_33', 'ball_36', 'ball_26', 'ball_16',
+                                                   'ball_22', 'ball_37', 'ball_21', 'ball_29', 'ball_04',
+                                                   'ball_02'],
 
-                        # 'paths_T100_050300_CAM1': ['ball_02', 'ball_00', 'ball_26', 'ball_21''ball_07',
-                        #                            'ball_34', 'ball_29', 'ball_35']
+                        'paths_T100_050300_CAM1': ['ball_02', 'ball_00', 'ball_26', 'ball_21''ball_07',
+                                                   'ball_34', 'ball_29', 'ball_35']
                         }
 
     # initial and final frame (number of frames)
     numframes_keys = {
-                      # 'paths_T100_010300_CAM1': [60, 1300],
-                      # 'paths_T100_020100_CAM1': [440, 1513],
-                      # 'paths_T100_020201_CAM1': [250, 1553],
-                      # 'paths_T100_020300_CAM1': [520, 1500],
-                      # 'paths_T100_030100_CAM1': [120, 1283],
-                      # 'paths_T100_030200_CAM1': [270, 1725],
-                      # 'paths_T100_030300_CAM1': [313, 1500],
-                      # 'paths_T100_040100_CAM1': [440, 2900],
-                      'paths_T100_040300_CAM1': [210, 2400], # [475, 2400]
-                      # 'paths_T100_050100_CAM1': [480, 1893],
-                      # 'paths_T100_050200_CAM1': [630, 1480],
-                      # 'paths_T100_050300_CAM1': [630, 2100]
+                      'paths_T100_010300_CAM1': [60, 1300],
+                      'paths_T100_020100_CAM1': [440, 1513],
+                      'paths_T100_020201_CAM1': [250, 1553],
+                      'paths_T100_020300_CAM1': [520, 1500],
+                      'paths_T100_030100_CAM1': [120, 1283],
+                      'paths_T100_030200_CAM1': [270, 1725],
+                      'paths_T100_030300_CAM1': [313, 1500],
+                      'paths_T100_040100_CAM1': [440, 2900],
+                      'paths_T100_040300_CAM1': [210, 2400],
+                      'paths_T100_050100_CAM1': [480, 1893],
+                      'paths_T100_050200_CAM1': [630, 1480],
+                      'paths_T100_050300_CAM1': [630, 2100]
                       }
 
     # initial and final time for adjustment (seconds)
     adjust_keys = {
-                   # 'paths_T100_010300_CAM1': [7, 16],
-                   # 'paths_T100_020100_CAM1': [10, 35],
-                   # 'paths_T100_020201_CAM1': [3, 31],
-                   # 'paths_T100_020300_CAM1': [10, 22],
-                   # 'paths_T100_030100_CAM1': [11, 24],
-                   # 'paths_T100_030200_CAM1': [10, 40],
-                   # 'paths_T100_030300_CAM1': [10, 33],
-                   # 'paths_T100_040100_CAM1': [11, 32],
+                   'paths_T100_010300_CAM1': [7, 16],
+                   'paths_T100_020100_CAM1': [10, 35],
+                   'paths_T100_020201_CAM1': [3, 31],
+                   'paths_T100_020300_CAM1': [10, 22],
+                   'paths_T100_030100_CAM1': [11, 24],
+                   'paths_T100_030200_CAM1': [10, 40],
+                   'paths_T100_030300_CAM1': [10, 33],
+                   'paths_T100_040100_CAM1': [11, 32],
                    'paths_T100_040300_CAM1': [10, 31],
-                   # 'paths_T100_050100_CAM1': [17, 21],
-                   # 'paths_T100_050200_CAM1': [2, 10], #X
-                   # 'paths_T100_050300_CAM1': [14, 25]
+                   'paths_T100_050100_CAM1': [17, 21],
+                   'paths_T100_050200_CAM1': [2, 10], #X
+                   'paths_T100_050300_CAM1': [14, 25]
                    }
 
-    # valor de 1 pixel em milimetros (1px = 1.8 mm)
+    # image scale (1px = 1.8 mm)
     pxmm = 1.48
 
     # frames per second
@@ -518,10 +512,10 @@ if __name__ == '__main__':
         paths_xy_qc = pd.DataFrame(paths_xy_qc)
 
         # save paths qualified
-        # paths_xy_qc.to_csv('data/qc/paths{}.csv'.format(filename[-17:]))
-        # paths_xy_qc.to_pickle('data/qc/paths{}.pkl'.format(filename[-17:]))
-        # dists_xy.to_csv('data/qc/dists{}.csv'.format(filename[-17:]))
-        # dists_xy_t0.to_csv('data/dists_xy_t0{}.csv'.format(filename[-17:]))
-        # vels_xy.to_csv('data/qc/vels{}.csv'.format(filename[-17:]))
+        paths_xy_qc.to_csv('data/qc/paths{}.csv'.format(filename[-17:]))
+        paths_xy_qc.to_pickle('data/qc/paths{}.pkl'.format(filename[-17:]))
+        dists_xy.to_csv('data/qc/dists{}.csv'.format(filename[-17:]))
+        dists_xy_t0.to_csv('data/dists_xy_t0{}.csv'.format(filename[-17:]))
+        vels_xy.to_csv('data/qc/vels{}.csv'.format(filename[-17:]))
 
     plt.show()
